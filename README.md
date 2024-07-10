@@ -167,6 +167,57 @@ To further validate the functionality and performance of the Automated Parking T
 * `-O1`: This optimization level enables basic optimizations that improve performance without significantly increasing compilation time.
 * `ofast`: This level enables aggressive optimizations, potentially breaking strict standards compliance for maximum performance.
 
+## Steps to Compile, Simulate, and Verify with SPIKE
+
+  1.Compile with Different Optimization Levels: First, compile the program with the `-O1` optimization level:
+
+`riscv64-unknown-elf-gcc -O1 -o ticketterminaldesigner ticketterminaldesigner.c`
+
+Then, compile the program with the `-Ofast` optimization level:
+
+`riscv64-unknown-elf-gcc -O1 -o ticketterminaldesigner_Ofast ticketterminaldesigner.c`
+
+![Screenshot 2024-07-11 012636](https://github.com/saisahana11/saisahana11/assets/175141569/59a77623-dc82-4a81-8a82-61ca4663a1ef)
+
+I used an AI tool to generate the initial code for the Automated Parking Ticket Vending Machine. Afterward, I compiled the code using the RISC-V toolchain and employed the SPIKE simulator for debugging and verification. By compiling the code with different optimization levels (-O1 and -Ofast) and using riscv64-unknown-elf-objdump to inspect the generated machine code, I ensured the correctness and efficiency of the program.
+
+#### (DEBUG done here) command:
+
+* `riscv64-unknown-elf-objdump -d ticketterminaldesigner |less`
+
+![Screenshot 2024-07-11 012607](https://github.com/saisahana11/saisahana11/assets/175141569/c3d2a59c-a59b-42e7-9f80-a2303237e49f)
+
+![Screenshot 2024-07-11 012708](https://github.com/saisahana11/saisahana11/assets/175141569/acaeed77-06ff-41f7-b3d2-27ca32a1fc5e)
+
+2.Spike simulation:
+
+* Running with spike `spike pk ticketterminaldesigner`
+
+![Screenshot 2024-07-11 012747](https://github.com/saisahana11/saisahana11/assets/175141569/47e6b892-f85f-472d-a803-36a469e3688d)
+
+3.Generating and Inspecting Objdump:
+
+ * To debug the spike we need this command `spike -d pk ticketterminaldesigner`
+ * Then, by using the command `until pc 0 100b0`,which is the 1st line command of the main function the program counter runs from the 0 till the code 100b0
+ * To find the contents of the code we need to use the command `reg 0 sp` in which we content of the 100b0 th line
+ * To find the content in the next line just give `ENTER`
+ * Initially the value of the sp is `0X0000003ffffffb40` then the next step the sp values get subtracted with the hexadecimal and we get `0X0000003ffffffb20`
+ * Finally, by subtracting the both main function values we get the 3rd output as `0X000000ffffffb20`
+
+![Screenshot 2024-07-11 012817](https://github.com/saisahana11/saisahana11/assets/175141569/e9bfc3a3-5106-4ef7-8b7d-8af83ad8ff31)
+
+![Screenshot 2024-07-11 012837](https://github.com/saisahana11/saisahana11/assets/175141569/0ea50738-90b4-436b-b994-b33eaae2c0fd)
+
+# CONCLUSION
+
+By compiling the Automated Parking Ticket Vending Machine program with different optimization levels, simulating it with SPIKE, and inspecting the generated machine code using objdump, you can gain insights into the performance and efficiency of your code on the RISC-V architecture. This process helps ensure that the program operates correctly and efficiently under different optimization settings, providing a deeper understanding of the compiler's impact on the code.
+
+
+
+
+
+
+
 
 
 
