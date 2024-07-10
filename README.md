@@ -212,36 +212,219 @@ I used an AI tool to generate the initial code for the Automated Parking Ticket 
 
 By compiling the Automated Parking Ticket Vending Machine program with different optimization levels, simulating it with SPIKE, and inspecting the generated machine code using objdump, you can gain insights into the performance and efficiency of your code on the RISC-V architecture. This process helps ensure that the program operates correctly and efficiently under different optimization settings, providing a deeper understanding of the compiler's impact on the code.
 
+# TASK 4
+## Identify various RISC-V instruction type (R, I, S, B, U, J) and exact 32-bit instruction code in the instruction type format for below RISC-V instructions
+
+ADD r6, r2, r1
+
+SUB r7, r1, r2
+
+AND r8, r1, r3
+
+OR r9, r2, r5
+
+XOR r10, r1, r4
+
+SLT r11, r2, r4
+
+ADDI r12, r4, 5
+
+SW r3, r1, 2
+
+SRL r16, r14, r2
+
+BNE r0, r1, 20
+
+BEQ r0, r0, 15
+
+LW r13, r1, 2
+
+SLL r15, r1, r2
+
+Upload the 32-bit pattern on Github"
+
+#### About RISC-V Instruction Type
+
+RISC-V, is an open standard instruction set architecture (ISA), categorizes its instructions into several types based on their formats and intended operations. These primary RISC-V instruction types are:
+
+#### 1.R-type (Register-type):
+
+   * These instructions operate on registers and typically involve arithmetic or logical operations between two source registers, storing the result in a destination register.
+   * Example: add rd, rs1, rs2 (Addition)
+     
+#### 2.I-type (Immediate-type):
+
+   * These instructions also operate on registers but include an immediate value (constant) as part of the operation. They are used for operations like immediate arithmetic, loads, and conditional branches.
+   * Example: addi rd, rs1, imm (Add Immediate)
+     
+#### 3.S-type (Store-type):
+
+   * These instructions store a value from a register into memory. They involve specifying a base address (in a register) and an offset to calculate the memory address.
+   * Example: sw rs2, offset(rs1) (Store Word)
+     
+#### 4.B-type (Branch-type):
+
+   * These instructions perform conditional branches based on comparisons between two registers. They determine whether to jump to a new address based on the result of the comparison.
+   * Example: beq rs1, rs2, offset (Branch if Equal)
+     
+#### 5.U-type (Upper Immediate-type):
+
+   * These instructions load a large immediate value (shifted left by 12 bits) into a register. They are used to set the upper bits of a register without affecting the lower bits.
+   * Example: lui rd, imm (Load Upper Immediate)
+     
+#### 6.J-type (Jump-type):
+
+   * These instructions perform unconditional jumps to a new address. They are typically used for procedure calls or long jumps within a program.
+   * Example: jal rd, offset (Jump and Link)
+ Each of these instruction types has a specific format, opcode, and field layout in the instruction encoding, allowing RISC-V processors to efficiently execute a wide range of operations while maintaining 
+ simplicity and modularity in the instruction set architecture
+
+![image](https://github.com/saisahana11/saisahana11/assets/175141569/326c63e7-eea2-4489-8139-34385e461273)
 
 
+# I-Type Instructions (Immediate)
+I-Type instructions format: `imm[11:0] | rs1 | funct3 | rd | opcode`
 
+ADDI r12, r3,5
 
+    Funct3: 000
+    rs1 (r3): 00011 (binary)
+    rd (r12): 01100 (binary)
+    Immediate (5): 00000101 (binary)
+    Instruction Code: 00000101 00011 01100 000 0010011```
 
+SW r3, r1, 4
 
+    Funct3: 010
+    rs1 (r1): 00001 (binary)
+    rs2 (r3): 00011 (binary)
+    Immediate (4): 000000100 (binary)
+    Instruction Code: 000000100 00001 00011 010 0100011```
 
+SRL r16, r11, r2
 
+    Funct7: 0000000
+    Funct3: 101
+    rs1 (r11): 01011 (binary)
+    rs2 (r2): 00010 (binary)
+    rd (r16): 10000 (binary)
+    Instruction Code: 0000000 00010 01011 101 10000 0110011```
 
+# R-Type Instructions (Register-Register)
+R-Type instructions format: `funct7 | rs2 | rs1 | funct3 | rd | opcode`
 
+ADD r1, r2, r3
+```
+   Funct7: 0000000
+   Funct3: 000
+   rs1 (r2): 00010 (binary)
+   rs2 (r3): 00011 (binary)
+   rd (r1): 00001 (binary)
+   Instruction Code: 0000000 00011 00010 000 00001 0110011```
+```
 
+SUB r3, r1, r2
+```
+   Funct7: 0100000
+   Funct3: 000
+   rs1 (r1): 00001 (binary)
+   rs2 (r2): 00010 (binary)
+   rd (r3): 00011 (binary)
+   Instruction Code: 0100000 00010 00001 000 00011 0110011```
+```
 
+AND r2, r1, r3
+```
+   Funct7: 0000000
+   Funct3: 111
+   rs1 (r1): 00001 (binary)
+   rs2 (r3): 00011 (binary)
+   rd (r2): 00010 (binary)
+   Instruction Code: 0000000 00011 00001 111 00010 0110011```
+```
+OR r8, r2, r5
+```
+   Funct7: 0000000
+   Funct3: 110
+   rs1 (r2): 00010 (binary)
+   rs2 (r5): 00101 (binary)
+   rd (r8): 01000 (binary)
+   Instruction Code: 0000000 00101 00010 110 01000 0110011```
+```
+XOR r8, r1, r4
+```
+   Funct7: 0000000
+   Funct3: 100
+   rs1 (r1): 00001 (binary)
+   rs2 (r4): 00100 (binary)
+   rd (r8): 01000 (binary)
+   Instruction Code: 0000000 00100 00001 100 01000 0110011```
+```
+SLT r10, r2, r4
+```
+   Funct7: 0000000
+   Funct3: 010
+   rs1 (r2): 00010 (binary)
+   rs2 (r4): 00100 (binary)
+   rd (r10): 01010 (binary)
+   Instruction Code: 0000000 00100 00010 010 01010 0110011```
+```
 
+# S-Type Instructions (Store)
+S-Type instructions format: `imm[11:5] | rs2 | rs1 | funct3 | imm[4:0] | opcode`
 
- 
+SW r3, r1, 4
+```
+    Funct3: 010
+    rs1 (r1): 00001 (binary)
+    rs2 (r3): 00011 (binary)
+    Immediate (4): 000000100 (binary)
+    Instruction Code: 000000100 00001 00011 010 0100011```
+```
 
+# B-Type Instructions (Branch)
+B-Type instructions format: `imm[12|10:5] | rs2 | rs1 | funct3 | imm[4:1|11] | opcode`
 
+BNE r0, r1, 20
+```
+   Funct3: 001
+   rs1 (r0): 00000 (binary)
+   rs2 (r1): 00001 (binary)
+   Immediate (20): 0000101000 (binary)
+   Instruction Code: 0000101000 00000 00001 001 1100011```
+```
+BEQ r0, r0, 15
+```
+    Funct3: 000
+    rs1 (r0): 00000 (binary)
+    rs2 (r0): 00000 (binary)
+    Immediate (15): 0000001111 (binary)
+    Instruction Code: 0000001111 00000 00000 000 1100011```
+```
 
+## U-Type Instructions (Upper Immediate)
+There are none in the provided list
 
+# J-Type Instructions (Jump)
 
-
-
-
-
-
-
-
-
-
-
-
+LW r13, r11, 2
+```
+  Funct3: 010
+  rs1 (r11): 01011 (binary)
+  rd (r13): 01101 (binary)
+  Immediate (2): 00000000010 (binary)
+  Instruction Code: 00000000010 01011 01101 010 0000011```
+```
+SLL r15, r11, r2
+```
+  Funct7: 0000000
+  Funct3: 001
+  rs1 (r11): 01011 (binary)
+  rs2 (r2): 00010 (binary)
+  rd (r15): 01111 (binary)
+  Instruction Code: 0000000 00010 01011 001 01111 0110011```
+```
+## Summary
+These instructions and their corresponding formats provide a clear representation of how RISC-V organizes its operations. The exact 32-bit codes ensure that each instruction is properly encoded for execution in a RISC-V processor.
 
 
