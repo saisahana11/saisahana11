@@ -138,6 +138,42 @@ This simple program demonstrates the basics of creating an automated ticket vend
  * Compile the program using `gcc ticketterminal.c` and execute the program using `./a.out` command
 
 * Compile the code using the RISC-V GCC compiler with the following command: `riscv64-unknown-elf-gcc -o1 -mabi=lp64 -march=rv64i -o ticketterminal.o ticketterminal.c`
+  
+![Screenshot 2024-07-10 233845](https://github.com/saisahana11/saisahana11/assets/175141569/3e22dd63-d88f-4da5-bf27-13bb40679a60)
+
+![Screenshot 2024-07-10 234014](https://github.com/saisahana11/saisahana11/assets/175141569/cbd8c34f-5eb7-4963-bca0-896b184da3b2)
+
+* Now, switch tab to function your main function and calculation using this command : `riscv64-unknown-elf-objdump -d ticketterminal.o  |less`
+
+ ![Screenshot 2024-07-10 233939](https://github.com/saisahana11/saisahana11/assets/175141569/8acbf043-2930-4677-a884-878ebe04cc41)
+
+* To access the main function using /main statement
+
+![Screenshot 2024-07-10 234038](https://github.com/saisahana11/saisahana11/assets/175141569/b3676576-1a6a-4d6c-bdd1-d6075509bdc2)
+
+* Calculation `-o1` instruction then to obtain the difference execute the same function using the -Ofast function like given below `riscv64-unknown-elf-gcc -Ofast -mabi=lp64 -march=rv64i -o ticketterminal.o ticketterminal.c`
+
+![Screenshot 2024-07-10 234057](https://github.com/saisahana11/saisahana11/assets/175141569/1691ecf9-ac38-43fb-bece-65019f7eec79)
+
+# CONCLUSION
+This foundational project showcases how RISC-V can be used for practical applications, setting the stage for more complex implementations and integrations with real-world hardware systems. By following these steps, you gain a clear understanding of the development process for embedded systems using the RISC-V architecture.
+
+# TASK 3
+## SPIKE simulation and verification with -O1 and -OFast along with running the RISK-V Objdump
+To further validate the functionality and performance of the Automated Parking Ticket Vending Machine program, you can use SPIKE for simulation and verification, and also run the RISC-V `objdump` tool to inspect the compiled binary. Additionally, you can compile the program with different optimization levels (`-O1` and `-Ofast`) to observe the impact on performance and code size.
+#### Verification with Optimization Levels:
+
+* Verify the program's behavior with two different levels of optimization:
+* `-O1`: This optimization level enables basic optimizations that improve performance without significantly increasing compilation time.
+* `ofast`: This level enables aggressive optimizations, potentially breaking strict standards compliance for maximum performance.
+
+
+
+
+
+
+
+
 
  
 
