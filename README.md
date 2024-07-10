@@ -53,6 +53,106 @@ Internship at VSD on RISC-V and VLSI using VSDSquadron Mini Board.
 By following these steps, you will have a virtual environment set up with the RISC-V toolchain ready for development.
 This setup allows you to compile and test RISC-V programs, providing a robust environment for RISC-V development projects.
 
+# TASK 2
+# PROJECT 1 - Ticket Terminal Designer: Developing an Automated Parking Ticket Vending Machine
+To develop an Automated Parking Ticket Vending Machine using the RISC-V toolchain, we will create a simple program that simulates issuing parking tickets. The program will prompt the user for the number of hours they intend to park, calculate the total cost based on a predefined rate, and print a ticket with the details.
+## 1. C PROGRAM CODE
+    #include <stdio.h>
+    #define RATE_PER_HOUR 5
+
+    void print_ticket(int hours, int cost) {
+    printf("\n----------------------------\n");
+    printf("    Parking Ticket\n");
+    printf("----------------------------\n");
+    printf("Hours Parked: %d\n", hours);
+    printf("Total Cost: $%d\n", cost);
+    printf("----------------------------\n");
+    printf("Thank you for using our service!\n");
+    }
+    int main() {
+    int hours;
+    int total_cost;
+
+    // Prompt the user for the number of hours they intend to park
+    printf("Welcome to the Automated Parking Ticket Vending Machine\n");
+    printf("Please enter the number of hours you intend to park: ");
+    scanf("%d", &hours);
+
+    // Calculate the total cost
+    total_cost = hours * RATE_PER_HOUR;
+
+    // Print the ticket
+    print_ticket(hours, total_cost);
+
+    return 0;
+}
+## Steps to Compile and Run the Program
+ 1.Create the Source File: Save the above code in a file named ticketterminaldesigner.c
+ 
+ 2.Compile the Program: Use the RISC-V toolchain to compile the program. Make sure you have the RISC-V toolchain installed and properly set up.
+ 
+          riscv64-unknown-elf-gcc -o ticketterminaldesigner ticketterminaldesigner.c
+          
+3.Run the Program To run the program, you need an emulator such as Spike or QEMU. Assuming you have Spike installed, you can run the program as follows: 
+
+          spike pk parking_ticket_machine
+This will prompt you to enter the number of hours, calculate the total cost, and print the parking ticket.
+
+#### Behavior: Manages the flow of the program and user interactions
+
+    int main() {
+     int hours;
+     int total_cost;
+
+     // Prompt the user for the number of hours they intend to park
+     printf("Welcome to the Automated Parking Ticket Vending Machine\n");
+     printf("Please enter the number of hours you intend to park: ");
+     scanf("%d", &hours);
+
+     // Calculate the total cost
+     total_cost = hours * RATE_PER_HOUR;
+
+     // Print the ticket
+     print_ticket(hours, total_cost);
+
+     return 0;
+    }
+This code serves as a foundational example of how an automated ticket vending system can be implemented in C. It can be further extended with additional features such as ticket validation, payment processing, and database integration for a more robust solution.
+
+## EXPLANATION OF THE CODE
+ * Header Inclusion: The program includes the
+`stdio.h`
+   header for input/output operations.
+
+ * Rate Definition: The `RATE_PER_HOUR` is defined as a constant value representing the cost per hour of parking.
+
+ * Ticket Printing Function: The `print_ticket` function takes the number of hours and the total cost as arguments and prints the ticket.
+
+ * Main Function:
+    * Prompts the user for the number of hours they intend to park.
+    * Calculates the total cost by multiplying the hours by the rate.
+    * Calls the `print_ticket` function to print the ticket with the details.
+
+This simple program demonstrates the basics of creating an automated ticket vending machine using the RISC-V toolchain.You can expand this program by adding more features such as handling invalid input, offering different parking rates, or integrating with a real hardware interface for a complete system.
+## 2. OUTPUT
+ * Compile the program using `gcc ticketterminal.c` and execute the program using `./a.out` command
+
+* Compile the code using the RISC-V GCC compiler with the following command: `riscv64-unknown-elf-gcc -o1 -mabi=lp64 -march=rv64i -o ticketterminal.o ticketterminal.c`
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
