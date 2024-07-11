@@ -427,4 +427,88 @@ SLL r15, r11, r2
 ## Summary
 These instructions and their corresponding formats provide a clear representation of how RISC-V organizes its operations. The exact 32-bit codes ensure that each instruction is properly encoded for execution in a RISC-V processor.
 
+# TASK 5
+## RISC-V Core Verilog netlist and Testbench for Functional simulation.
+#### Acknowledgements Section :
+Referencing a GitHub repository: `https://github.com/vinayrayapati/rv32i/`
+
+I developed a comprehensive set of commands and successfully achieved the desired output for my project. This accomplishment was greatly aided by the invaluable guidance and examples provided by the GitHub repository maintained by Vinay Rayapati (https://github.com/vinayrayapati/rv32i/). The repository served as a crucial reference for understanding the required techniques and applying them effectively in my implementation. I am deeply grateful for the insights and resources offered by this repository, which significantly contributed to the success of my project.
+
+## REFERENCE-DRIVEN DEVELOPMENT
+ * Clone the Reference Repository
+
+ * Set Up Simulation Tools (GTKWave)
+
+ * Edit the Testbench File
+
+ * Run the Functional Simulation
+
+#### WORKFLOW
+
+1.Cloning the Reference:
+
+ * Cloning is the process of creating a local copy of a remote repository. This allows you to have a complete copy of the repo
+
+ * Command 1 : git clone `http://github.com/vinayrayapati/rv32i.git my_ticket_rv32i`
+
+ * Command 2 : `cd my_printterminal_rv32i`
+
+![Screenshot 2024-07-11 175602](https://github.com/saisahana11/saisahana11/assets/175141569/5a4317f9-e4a3-4af8-bb67-66e411760b59)
+This will download the project into a local directory named my_printterminal_rv32i.
+
+2.Simulation Tools:
+
+ * command 3 : `sudo apt update`
+
+* command 4 : `sudo apt install inverilog gtkwave`
+
+![ss 1](https://github.com/saisahana11/saisahana11/assets/175141569/14403d1d-caa0-437e-8edf-e41e9291f58c)
+
+![ss2](https://github.com/saisahana11/saisahana11/assets/175141569/bbe79b60-e25f-45ff-8232-bd23333880bf)
+
+3.Testbench File:
+Here we use the Testbench to setup our environment to test and validate code
+
+ * Open Testbench file using text editor:
+
+ * `nano iiitb_rv32i_tb.v`
+
+![Screenshot 2024-07-11 175413](https://github.com/saisahana11/saisahana11/assets/175141569/1ae36288-2803-447a-bc23-0e90e76de2ae)
+
+ * Simulation
+
+ * `iverilog -o rv32i_simulation iiitb_rv32i.v iiitb_rv32i_tb.v`
+
+![ss3](https://github.com/saisahana11/saisahana11/assets/175141569/006f27b8-d0ac-4962-b128-bfaa88a66a5e)
+
+4.Run Functional Simulation:
+
+`vvp rv32i_simulation`
+
+![Screenshot 2024-07-11 175602](https://github.com/saisahana11/saisahana11/assets/175141569/e49affb7-3a83-4265-8568-95a8c134d393)
+
+ * Here we get he Output in the form of a wave
+
+ * `gtkwave simulation.vcd`
+
+ * Here we get the gtkwave windows and Output can be obtained.
+
+![Screenshot 2024-07-11 175628](https://github.com/saisahana11/saisahana11/assets/175141569/8f74ed38-1780-4dbf-b829-1bbeff8d3a00)
+
+# OUTPUT
+## ADD (r1,r2,r3)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
