@@ -498,6 +498,57 @@ Here we use the Testbench to setup our environment to test and validate code
 # OUTPUT
 ## ADD (r1,r2,r3)
 
+![s1](https://github.com/saisahana11/saisahana11/assets/175141569/a2cd7e41-9630-4ed7-9af0-15e780516b62)
+
+## SUB (r3,r1,r2)
+
+![Screenshot 2024-07-11 191022](https://github.com/saisahana11/saisahana11/assets/175141569/9224f3cc-7764-46dd-9dbd-18e8386d692f)
+
+## AND (r2,r1,r3)
+
+![s2](https://github.com/saisahana11/saisahana11/assets/175141569/ecca2f19-027f-421d-95bd-c22235c15129)
+
+## OR (r8,r2,r5)
+
+![or](https://github.com/saisahana11/saisahana11/assets/175141569/c55fb57a-dcd2-436d-b2cf-c4552ab1c08b)
+
+## XOR (r8,r1,r4)
+
+![xor](https://github.com/saisahana11/saisahana11/assets/175141569/16cda605-0d6a-4542-b599-d414314663d3)
+
+## SLT (r10,r2,r4)
+
+![slt](https://github.com/saisahana11/saisahana11/assets/175141569/3cac0c2e-ac80-469b-8f8c-c37ef4e2f53a)
+
+## BEQ (r0,r0,15)
+
+![Screenshot 2024-07-11 192603](https://github.com/saisahana11/saisahana11/assets/175141569/2cbecb8a-9bf0-4813-bb34-c56266ced937)
+
+## BNE (r0,r1,20)
+
+![Screenshot 2024-07-11 192921](https://github.com/saisahana11/saisahana11/assets/175141569/9ad6ed97-3fd3-4899-a792-0b1c09023ec1)
+
+## SLL (r15,r11,r2)
+
+![Screenshot 2024-07-11 192253](https://github.com/saisahana11/saisahana11/assets/175141569/011ee474-c3c8-4331-aa13-758a58b1fbaf)
+
+## GTKWAVE WINDOW
+
+![Screenshot 2024-07-11 193254](https://github.com/saisahana11/saisahana11/assets/175141569/7c7496b5-d0b5-4a96-b45f-ab3c5d7cc391)
+
+The tests have been completed and all results have been confirmed.
+
+# TASK 6
+## AUTOMATED PARKING TICKET VENDING MACHINE
+
+
+
+
+
+
+
+
+
 
 
 
