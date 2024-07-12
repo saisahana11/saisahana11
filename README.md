@@ -541,9 +541,145 @@ The tests have been completed and all results have been confirmed.
 # TASK 6
 ## AUTOMATED PARKING TICKET VENDING MACHINE
 
+### PROJECT OVERVIEW
+#### OBJECTIVE
 
+Develop an automated parking ticket vending machine (PTVM) that can issue parking tickets, accept payments, and provide receipts to users.
 
+#### KEY FEATURES
 
+ * Ticket Issuance: Dispense parking tickets with relevant information.
+
+ * Payment Processing: Accept cash, credit/debit cards, and digital payments.
+
+ * Receipt Printing: Provide receipts for transactions.
+
+ * User Interface: Simple and intuitive touch screen interface.
+
+ * Backend System: Manage data and transactions.
+
+#### Hardware Components:
+
+ * _Microcontroller_: Arduino, Raspberry Pi, or similar.
+
+ * _LCD Display_: For showing information to the user.
+
+ * *Keypad*: For user input.
+
+ * _Thermal Printer_: For printing tickets and receipts.
+
+ * _Card Reader_: For accepting credit/debit card payments.
+
+ * _Coin Acceptor and Bill Validator_: For accepting cash payments.
+
+ * _RTC Module (Real-Time Clock_): For keeping track of time.
+
+ * _Power Supply_: To power all components.
+
+ * _LEDs and Buzzers_: For status indicators and alerts.
+
+#### PIN DIAGRAM
+Let's assume we are using an Arduino Uno for simplicity. The connections might look something like this:
+
+**1. LCD Display:**
+
+ 1.VSS to GND
+
+ 2.VDD to 5V
+
+ 3.V0 to Potentiometer (for contrast control)
+
+ 4.RS to Digital Pin 12
+
+ 5.RW to GND
+
+ 6.E to Digital Pin 11
+
+ 7.D4 to Digital Pin 5
+
+ 8.D5 to Digital Pin 4
+
+ 9.D6 to Digital Pin 3
+
+ 10.D7 to Digital Pin 2
+
+ 11.A to 5V (Backlight Anode)
+
+ 12.K to GND (Backlight Cathode)
+ 
+#### KEYPAD
+ * Connect the rows and columns of the keypad to Digital Pins (e.g., Pins 6, 7, 8, 9 for rows and Pins 10, A0, A1, A2 for columns).
+#### RTC MODULE
+ * SDA to A4 (I2C Data)
+
+ * SCL to A5 (I2C Clock)
+
+ * VCC to 5V
+
+ * GND to GND
+#### LEDs AND BUZZERS
+ * Connect LEDs to Digital Pins with appropriate current-limiting resistors.
+
+ * Connect Buzzer to a Digital Pin with a transistor if necessary.
+
+#### EXAMPLE PIN DIAGRAM
+```
++-------------------------+        +-------------------------+
+|       Arduino Uno       |        |       Components        |
++-------------------------+        +-------------------------+
+| LCD RS  -> Pin 12       |        | LCD RS -> Pin 12        |
+| LCD E   -> Pin 11       |        | LCD E  -> Pin 11        |
+| LCD D4  -> Pin 5        |        | LCD D4 -> Pin 5         |
+| LCD D5  -> Pin 4        |        | LCD D5 -> Pin 4         |
+| LCD D6  -> Pin 3        |        | LCD D6 -> Pin 3         |
+| LCD D7  -> Pin 2        |        | LCD D7 -> Pin 2         |
+| Keypad R1 -> Pin 6      |        | Keypad R1 -> Pin 6      |
+| Keypad R2 -> Pin 7      |        | Keypad R2 -> Pin 7      |
+| Keypad R3 -> Pin 8      |        | Keypad R3 -> Pin 8      |
+| Keypad R4 -> Pin 9      |        | Keypad R4 -> Pin 9      |
+| Keypad C1 -> Pin 10     |        | Keypad C1 -> Pin 10     |
+| Keypad C2 -> Pin A0     |        | Keypad C2 -> Pin A0     |
+| Keypad C3 -> Pin A1     |        | Keypad C3 -> Pin A1     |
+| Keypad C4 -> Pin A2     |        | Keypad C4 -> Pin A2     |
+| Printer TX -> Pin 9     |        | Printer TX -> Pin 9     |
+| Printer RX -> Pin 10    |        | Printer RX -> Pin 10    |
+| Coin Acceptor -> Pin 13 |        | Coin Acceptor -> Pin 13 |
+| Bill Validator -> Pin A3|        | Bill Validator -> Pin A3|
+| RTC SDA -> Pin A4       |        | RTC SDA -> Pin A4       |
+| RTC SCL -> Pin A5       |        | RTC SCL -> Pin A5       |
+| LED -> Appropriate Pin  |        | LED -> Appropriate Pin  |
+| Buzzer -> Appropriate Pin|       | Buzzer -> Appropriate Pin|
++-------------------------+        +-------------------------+
+```
+#### CODE
+```
+int main() {
+    int choice, ticket_number;
+
+    while (1) {
+        show_menu();
+        printf("Enter your choice: ");
+        scanf("%d", &choice);
+
+        switch (choice) {
+            case 1:
+                issue_ticket();
+                break;
+            case 2:
+                printf("Enter ticket number to pay: ");
+                scanf("%d", &ticket_number);
+                pay_ticket(ticket_number);
+                break;
+            case 3:
+                exit(0);
+            default:
+                printf("Invalid choice. Please try again.\n");
+        }
+    }
+
+    return 0;
+}
+```
 
 
 
